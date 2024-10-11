@@ -6,8 +6,21 @@ class Parser
 
   def parse(str)
     str.split("\n").map do |content|
-      content.split(",")
+      details = content.split(",")
+      price = details[1]
+      discount = details[2]
+      name = details[0]
+      Item.new(price,discount,name)
     end
+  end
+end
+
+class Item
+attr_reader :price, :discount, :name
+  def initialize(price,discount,name)
+    @price = price.to_i
+    @discount = discount
+    @name = name
   end
 end
 
