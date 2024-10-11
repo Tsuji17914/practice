@@ -1,9 +1,13 @@
 # この下にコードを追加してください
+require 'debug'
 class Parser
   def initialize(a)
   end
 
   def parse(str)
+    str.split("\n").map do |content|
+      content.split(",")
+    end
   end
 end
 
@@ -17,19 +21,20 @@ EOS
 
 parser = Parser.new(",")
 items = parser.parse(str)
+
 p items.size #=> 2
 p items.first.price #=> 200
 p items.last.discount #=> "3割引"
 p items.map(&:name) #=> ["いちご", "さくらんぼ"]
 
-str = <<-EOS
-メロン\t400\t1割引
-バナナ\t80\t半額
-EOS
+# str = <<-EOS
+# メロン\t400\t1割引
+# バナナ\t80\t半額
+# EOS
 
-parser = Parser.new("\t")
-items = parser.parse(str)
-p items.size #=> 2
-p items.first.price #=> 400
-p items.last.discount #=> "半額"
-p items.map(&:name) #=> ["メロン", "バナナ"]
+# parser = Parser.new("\t")
+# items = parser.parse(str)
+# p items.size #=> 2
+# p items.first.price #=> 400
+# p items.last.discount #=> "半額"
+# p items.map(&:name) #=> ["メロン", "バナナ"]
