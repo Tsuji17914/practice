@@ -1,5 +1,10 @@
 # この下にコードを追加してください
 class Parser
+  def initialize(a)
+  end
+
+  def parse(str)
+  end
 end
 
 # ここから下はそのままにしてください
