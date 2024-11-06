@@ -1,4 +1,24 @@
 # この下にコードを追加してください
+class Item
+  attr_reader :name, :price, :discount
+  def initialize(name, price, discount)
+    @name = name
+    @price = price.to_i
+    @discount = discount
+  end
+end
+    
+class Parser
+  def parse(str)
+    str.split("\n").map do |element|
+    values = element.split(",")
+    name = values[0]
+    price = values[1]
+    discount = values[2]
+    Item.new(name,price,discount)
+    end
+  end
+end
 
 # ここから下はそのままにしてください
 # デバッグのため一時的に変更するのは構いません
